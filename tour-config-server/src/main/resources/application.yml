@@ -1,0 +1,13 @@
+server:
+  port: ${PORT:8888}
+
+#conf: /your/local/path/local-configuration		#Define this in case you need to test local properties configuration
+
+#in our case we decided to integrate our server configuration with properties defined at git server
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${conf:https://github.com/davisusanibar/netflixoss-all-tour-config}		#git project that give to the app global properties configuration 
+          basedir: target/config        

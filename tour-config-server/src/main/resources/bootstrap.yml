@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: tour-config-server-app	#application name, define this name to difference from project name
+    
+encrypt:
+  failOnError: false
+  keyStore:
+    location: classpath:keystore.jks
+    password: ${KEYSTORE_PASSWORD:foobar} # don't use a default value in production
+    alias: test

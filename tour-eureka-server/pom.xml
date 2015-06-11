@@ -5,5 +5,19 @@
     <artifactId>parent.tour</artifactId>
     <version>1.0</version>
   </parent>
+  
   <artifactId>tour-eureka-server</artifactId>
+  <packaging>jar</packaging>
+  
+	<properties>
+		<start-class>spring.netflix.tour.eureka.server.EurekaServer</start-class>
+	</properties>  
+  
+	<dependencies>	
+	    <dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-starter-eureka-server</artifactId>
+	    </dependency>
+	</dependencies>
+	
 </project>

@@ -1,0 +1,10 @@
+#1.- initial configuration
+server:
+  port: ${vcap.application.port:8585}
+  
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0

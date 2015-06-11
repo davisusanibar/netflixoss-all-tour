@@ -1,0 +1,12 @@
+---
+applications:
+- name: tour-eureka-server-changed
+  memory: 512M
+  instances: 1
+  host: tour-eureka-server-changed-${random-word}
+  domain: cfapps.io
+  path: target/tour-eureka-server-changed.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    DEBUG: "true"
+    debug: "true"

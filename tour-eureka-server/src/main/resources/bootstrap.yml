@@ -1,0 +1,12 @@
+#1.- initial configuration
+spring:
+  application:
+    name: tour-eureka-server-dsusanibar
+    
+#2.- changing the bootstrap configuration    
+#spring:
+#  application:
+#    name: tour-eureka-server-dsusanibar
+#  cloud:
+#    config:
+#      uri: ${vcap.services.config-service.credentials.uri:http://localhost:8888}

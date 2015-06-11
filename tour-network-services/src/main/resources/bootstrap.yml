@@ -1,0 +1,12 @@
+#1.- initial configuration (to define only the name of the app)
+#spring:
+#  application:
+#    name: tour-network-services
+    
+#2.- changing the bootstrap configuration (name of the app + cloud integration)
+spring:
+  application:
+    name: tour-network-services
+  cloud:
+    config:
+      uri: ${vcap.services.config-service.credentials.uri:http://localhost:8888}
