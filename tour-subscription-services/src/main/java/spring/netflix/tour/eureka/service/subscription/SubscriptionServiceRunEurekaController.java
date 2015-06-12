@@ -2,6 +2,7 @@ package spring.netflix.tour.eureka.service.subscription;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Set;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -31,25 +32,47 @@ public class SubscriptionServiceRunEurekaController implements CommandLineRunner
 		//This is more usefull in our case because we only need to attach to the Eureka and ask about the service registered
 		new SpringApplicationBuilder(SubscriptionServiceRunEurekaController.class).web(false).run(args);
 	}
-
-
+	
 	@Override
 	public void run(String... args) throws Exception {
 		List<String> lstServices = discoveryClient.getServices();
-		System.out.println("-----------------------Services Available-----------------------");
+		System.out.println("-----------------------Services Available-----------------------");		
+		
 		for (String service : lstServices) {			
 			System.out.println("Service: "+service);
-			System.out.println("----------------------------------------------------------------");
-			discoveryClient.getInstances(service).forEach((ServiceInstance s) -> {				
-				System.out.println("s: "+ToStringBuilder.reflectionToString(s));
-	        	System.out.println("s.getUri(): "+s.getUri());
-	        	System.out.println("s.getHost(): "+s.getHost());
-	        	System.out.println("s.getPort(): "+s.getPort());
-	        	System.out.println("s.getServiceId(): "+s.getServiceId());	
-	        	System.out.println("**********************************************************");
-	        });
+			System.out.println("----------------------------------------------------------------");				
+			ListIterator<ServiceInstance> lstServiceInstance = discoveryClient.getInstances(service).listIterator();			
+			while (lstServiceInstance.hasNext()) {
+				ServiceInstance serviceInstance = (ServiceInstance) lstServiceInstance.next();
+				System.out.println("serviceInstance: "+ToStringBuilder.reflectionToString(serviceInstance));
+	        	System.out.println("serviceInstance.getUri(): "+serviceInstance.getUri());
+	        	System.out.println("serviceInstance.getHost(): "+serviceInstance.getHost());
+	        	System.out.println("serviceInstance.getPort(): "+serviceInstance.getPort());
+			}			
 			System.out.println("----------------------------------------------------------------");			
-		}
+		}		
+		
 		System.out.println("-----------------------Services Available-----------------------");
-	}
+	}	
+
+/* Supported and working for JDK 8 */
+//	@Override
+//	public void run(String... args) throws Exception {
+//		List<String> lstServices = discoveryClient.getServices();
+//		System.out.println("-----------------------Services Available-----------------------");
+//		for (String service : lstServices) {			
+//			System.out.println("Service: "+service);
+//			System.out.println("----------------------------------------------------------------");
+//			discoveryClient.getInstances(service).forEach((ServiceInstance s) -> {				
+//				System.out.println("s: "+ToStringBuilder.reflectionToString(s));
+//	        	System.out.println("s.getUri(): "+s.getUri());
+//	        	System.out.println("s.getHost(): "+s.getHost());
+//	        	System.out.println("s.getPort(): "+s.getPort());
+//	        	System.out.println("s.getServiceId(): "+s.getServiceId());	
+//	        	System.out.println("**********************************************************");
+//	        });
+//			System.out.println("----------------------------------------------------------------");			
+//		}
+//		System.out.println("-----------------------Services Available-----------------------");
+//	}
 }

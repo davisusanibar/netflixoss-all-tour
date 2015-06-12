@@ -2,9 +2,10 @@
 server:
   port: ${vcap.application.port:8585}
   
+#true: means that register this app name to the eureka, false: only start the eureka server and not register this app  
 eureka:
   client:
-    registerWithEureka: true
+    registerWithEureka: true  
     fetchRegistry: false
   server:
     waitTimeInMsWhenSyncEmpty: 0

@@ -1,12 +1,27 @@
 #1.- initial configuration (to define only the name of the app)
 #spring:
 #  application:
-#    name: tour-network-services
+#    name: tour-network-services-app  #application name, define this name to difference from project name
     
 #2.- changing the bootstrap configuration (name of the app + cloud integration)
 spring:
   application:
-    name: tour-network-services
+    name: tour-network-services-app #application name, define this name to difference from project name
   cloud:
     config:
-      uri: ${vcap.services.config-service.credentials.uri:http://localhost:8888}
+      uri: ${CONFIG_SERVER_URI:${vcap.services.${PREFIX:}configserver.credentials.uri:http://localhost:8888}}
+      #uri: ${CONFIG_SERVER_URI:${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@localhost:8888}}
+      
+#3.- changin the way about how an "instanceId" and attributes will be created
+#by default when the client app is registered it has this format: local_hostanme
+#for test locally and you could see on the dashboard different client instance you should include this configuration 
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10 #tbd
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+  client:
+    region: default #tbd
+    registryFetchIntervalSeconds: 5 #tbd
+    availabilityZones: 
+      default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}  #tbd

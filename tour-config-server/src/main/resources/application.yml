@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8888}
+  port: ${vcap.application.port:8888}
 
 #conf: /your/local/path/local-configuration		#Define this in case you need to test local properties configuration
 
