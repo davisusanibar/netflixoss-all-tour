@@ -10,3 +10,8 @@ spring:
   cloud:
     config:
       uri: ${vcap.services.config-service.credentials.uri:http://localhost:8888}
+            
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8585/eureka/      

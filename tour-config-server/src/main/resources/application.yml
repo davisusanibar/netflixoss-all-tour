@@ -10,4 +10,15 @@ spring:
       server:
         git:
           uri: ${conf:https://github.com/davisusanibar/netflixoss-all-tour-config}		#git project that give to the app global properties configuration 
-          basedir: target/config        
+          basedir: target/config
+          
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
+    hostname: ${CF_INSTANCE_IP:localhost}
+    nonSecurePort: ${CF_INSTANCE_PORT:${PORT:${server.port:8888}}}
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8999}/eureka/  
