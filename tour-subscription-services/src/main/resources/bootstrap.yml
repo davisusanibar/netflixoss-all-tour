@@ -1,17 +1,14 @@
-#1.- initial configuration (to define only the name of the app)
-#spring:
-#  application:
-#    name: tour-subscription-services
-    
-#2.- changing the bootstrap configuration (name of the app + cloud integration)
+login.properties.server.user: adminuser
+ 
 spring:
   application:
-    name: tour-subscription-services
+    name: tour-subscription-services-app #application name, define this name to difference from project name
   cloud:
     config:
-      uri: ${vcap.services.config-service.credentials.uri:http://localhost:8888}
-            
+      uri: ${CONFIG_SERVER_URI:${vcap.services.${PREFIX:}tour-config-server-app.credentials.uri:http://${login.properties.server.user:adminuser}:${PASSWORD_LOGIN_SERVER_PROPERTIES:adminuser}@localhost:8590}}      
+
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8585/eureka/      
+  instance:
+    leaseRenewalIntervalInSeconds: 10 #tbd
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}      

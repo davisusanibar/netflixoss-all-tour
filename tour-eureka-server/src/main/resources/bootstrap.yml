@@ -3,10 +3,13 @@
 #  application:
 #    name: tour-eureka-server-app #application name, define this name to difference from project name
     
-#2.- changing the bootstrap configuration    
+#2.- changing the bootstrap configuration
+
+login.properties.server.user: adminuser
+ 
 spring:
   application:
     name: tour-eureka-server-app
   cloud:
     config:
-      uri: ${CONFIG_SERVER_URI:${vcap.services.${PREFIX:}configserver.credentials.uri:http://localhost:8888}}
+      uri: ${CONFIG_SERVER_URI:${vcap.services.${PREFIX:}tour-config-server-app.credentials.uri:http://${login.properties.server.user:adminuser}:${PASSWORD_LOGIN_SERVER_PROPERTIES:adminuser}@localhost:8590}}

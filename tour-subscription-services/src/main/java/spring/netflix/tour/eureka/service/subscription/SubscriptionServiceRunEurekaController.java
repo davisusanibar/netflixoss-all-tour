@@ -66,29 +66,7 @@ public class SubscriptionServiceRunEurekaController implements CommandLineRunner
 		
 		System.out.println(feignClient.getIPList());
 	}
-	
-	
-
-/* Supported and working for JDK 8 */
-//	@Override
-//	public void run(String... args) throws Exception {
-//		List<String> lstServices = discoveryClient.getServices();
-//		System.out.println("-----------------------Services Available-----------------------");
-//		for (String service : lstServices) {			
-//			System.out.println("Service: "+service);
-//			System.out.println("----------------------------------------------------------------");
-//			discoveryClient.getInstances(service).forEach((ServiceInstance s) -> {				
-//				System.out.println("s: "+ToStringBuilder.reflectionToString(s));
-//	        	System.out.println("s.getUri(): "+s.getUri());
-//	        	System.out.println("s.getHost(): "+s.getHost());
-//	        	System.out.println("s.getPort(): "+s.getPort());
-//	        	System.out.println("s.getServiceId(): "+s.getServiceId());	
-//	        	System.out.println("**********************************************************");
-//	        });
-//			System.out.println("----------------------------------------------------------------");			
-//		}
-//		System.out.println("-----------------------Services Available-----------------------");
-//	}
+		
 	@FeignClient("tour-network-services-app")
 	interface FeignIpClient2 {
 	    @RequestMapping(method = RequestMethod.GET, value = "/test/network/boot/eureka/iplist")

@@ -1,5 +1,16 @@
 #1.- initial configuration
 server:
-  port: ${vcap.application.port:8999}
+  port: ${vcap.application.port:8585}
   
-#true: means that register this app name to the eureka, false: only start the eureka server and not register this app  
+#registerWithEureka: true : means that register this app name to the eureka, false: only start the eureka server and not register this app  
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    
+security:
+  user:
+    name: adminusereureka
+    password: ${PASSWORD_LOGIN_EUREKA_SERVER:adminusereureka}

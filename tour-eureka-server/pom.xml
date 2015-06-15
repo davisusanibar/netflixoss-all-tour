@@ -3,7 +3,7 @@
   <parent>
     <groupId>spring.netflixoss</groupId>
     <artifactId>parent.tour</artifactId>
-    <version>1.0</version>
+    <version>1.0.RC</version>
   </parent>
   
   <artifactId>tour-eureka-server</artifactId>
@@ -17,7 +17,7 @@
 	    <dependency>
 	        <groupId>org.springframework.cloud</groupId>
 	        <artifactId>spring-cloud-starter-eureka-server</artifactId>
-	    </dependency>
+	    </dependency>		    
 	</dependencies>
 	
 </project>
