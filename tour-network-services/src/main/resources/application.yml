@@ -1,2 +1,10 @@
 server:
   port: ${vcap.application.port:8686}
+
+---
+spring:
+  profiles: cloud
+eureka:
+  instance:
+    hostname: ${APPLICATION_DOMAIN}
+    nonSecurePort: 80 

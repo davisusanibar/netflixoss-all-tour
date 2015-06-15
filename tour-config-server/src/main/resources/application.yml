@@ -25,15 +25,3 @@ security:
   user:
     name: adminuser
     password: "{cipher}AQAc9OSnvjINdppzekVwaOXVVedkKbCkCdNgQzW3ltj4qbql8HoevCH0/VWZdjpdVTqiYKq8gjm62Kne2o16jiVosG/PyhDMeAMh0Z411ZK5jVtY40TPI+dTNHBYbqmNffF/cFArRBvVa5+tt9LP0N8khbpML7OHJ0s/S932S+rgHN36cAsIN4FwpVdJgOeb4R0ahZnv7YUD9KbPh+KsYPQGNbeXLGIGz3b5W8hj0IV1OzSovTFlqjgAvf292XTD/LuXNoJ8cvzmVQqzdpDOSXG1IwJ5KWgq+PXiRHCul1Q5yF+xRyB46T3DRsfxKq0im+E1U1LN1HGJ9Vulss2Ck1lHl26LmJrbCSqeQtBVoDg6JelWSmQO48FY9h2vMKrCKv0="          
-          
----
-spring:
-  profiles: cloud
-eureka:
-  password: password
-  instance:
-    hostname: ${vcap.application.uris[0]}
-    nonSecurePort: 80
-  client:
-    serviceUrl:
-      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:${eureka.password:}@${PREFIX:}eureka.${application.domain:cfapps.io}}/eureka/          

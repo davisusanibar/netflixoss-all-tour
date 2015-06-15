@@ -12,6 +12,7 @@
     <version>1.0.RC</version>
     <packaging>pom</packaging>
     <modules>
+    	<module>tour-config-server</module>
     	<!-- 
         <module>tour-eureka-server</module>
         <module>tour-network-services</module>
@@ -59,10 +60,10 @@
 		</dependency>
 		
 		<!-- Needed to start with http basic authentication -->
-	    <dependency>
+	    <!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency>  -->
 		
 		<!-- Needed to a client could integrate with git server properties config -->
 		<dependency>
@@ -73,12 +74,7 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-cloudfoundry</artifactId>
-		</dependency>				
+		</dependency>			
 	</dependencies>
 
     <repositories>

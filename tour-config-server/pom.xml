@@ -16,6 +16,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
-        </dependency>   
+        </dependency>  
+        
+		<!-- Needed to start with http basic authentication -->
+	    <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>        
     </dependencies>  
 </project>

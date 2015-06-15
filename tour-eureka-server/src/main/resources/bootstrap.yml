@@ -13,3 +13,9 @@ spring:
   cloud:
     config:
       uri: ${CONFIG_SERVER_URI:${vcap.services.${PREFIX:}tour-config-server-app.credentials.uri:http://${login.properties.server.user:adminuser}:${PASSWORD_LOGIN_SERVER_PROPERTIES:adminuser}@localhost:8590}}
+      
+      
+
+      
+
+      

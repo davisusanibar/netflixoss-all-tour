@@ -9,6 +9,8 @@ eureka:
     fetchRegistry: false
   server:
     waitTimeInMsWhenSyncEmpty: 0
+  instance:
+    leaseRenewalIntervalInSeconds: 10
     
 security:
   user:

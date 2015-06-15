@@ -1,0 +1,12 @@
+---
+applications:
+- name: tour-config-server
+  memory: 512M
+  instances: 1
+  host: tour-config-server-host-${random-word}
+  domain: cfapps.io
+  path: target/tour-config-server.jar
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    DEBUG: "true"
+    debug: "true"
